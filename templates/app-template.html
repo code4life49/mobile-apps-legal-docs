@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{app_name}} - 法律文档</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/app-template.css" />
+    <meta name="description" content="{{app_name}}的隐私政策、用户协议等法律文档" />
+    <meta name="keywords" content="{{app_name}}, 隐私政策, 用户协议, 法律文档" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/images/logo.png" alt="Legal Docs" class="logo" />
+            移动应用法律文档
+          </a>
+          <div class="nav-menu">
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="about.html" class="nav-link">关于</a>
+            <a href="contact.html" class="nav-link">联系</a>
+          </div>
+          <button class="nav-toggle" aria-label="切换菜单">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <!-- 应用信息区域 -->
+        <section class="app-info">
+          <div class="app-header">
+            <div class="app-logo-large">
+              <img src="{{app_icon}}" alt="{{app_name}}" />
+            </div>
+            <div class="app-details">
+              <h1 class="app-name">{{app_name}}</h1>
+              <p class="app-developer">开发者：{{developer}}</p>
+              <p class="app-platform">平台：{{platform}}</p>
+              <p class="app-version">版本：{{version}}</p>
+            </div>
+          </div>
+          <div class="app-description">
+            <p>{{app_description}}</p>
+          </div>
+        </section>
+
+        <!-- 文档导航 -->
+        <section class="doc-navigation">
+          <div class="doc-tabs">
+            <button class="doc-tab active" data-doc="privacy">隐私政策</button>
+            <button class="doc-tab" data-doc="terms">用户协议</button>
+            <button class="doc-tab" data-doc="license">许可协议</button>
+            <button class="doc-tab" data-doc="disclaimer">免责声明</button>
+          </div>
+        </section>
+
+        <!-- 文档内容 -->
+        <section class="doc-content">
+          <div class="doc-panel active" id="privacy-panel">
+            <div class="doc-header">
+              <h2>隐私政策</h2>
+              <div class="doc-meta">
+                <span class="doc-date">更新时间：{{privacy_updated}}</span>
+                <span class="doc-version">版本：{{privacy_version}}</span>
+              </div>
+            </div>
+            <div class="doc-body">
+              <div class="doc-summary">
+                <h3>政策摘要</h3>
+                <p>{{privacy_summary}}</p>
+              </div>
+              <div class="doc-text">{{privacy_content}}</div>
+            </div>
+          </div>
+
+          <div class="doc-panel" id="terms-panel">
+            <div class="doc-header">
+              <h2>用户协议</h2>
+              <div class="doc-meta">
+                <span class="doc-date">更新时间：{{terms_updated}}</span>
+                <span class="doc-version">版本：{{terms_version}}</span>
+              </div>
+            </div>
+            <div class="doc-body">
+              <div class="doc-summary">
+                <h3>协议摘要</h3>
+                <p>{{terms_summary}}</p>
+              </div>
+              <div class="doc-text">{{terms_content}}</div>
+            </div>
+          </div>
+
+          <div class="doc-panel" id="license-panel">
+            <div class="doc-header">
+              <h2>许可协议</h2>
+              <div class="doc-meta">
+                <span class="doc-date">更新时间：{{license_updated}}</span>
+                <span class="doc-version">版本：{{license_version}}</span>
+              </div>
+            </div>
+            <div class="doc-body">
+              <div class="doc-summary">
+                <h3>许可摘要</h3>
+                <p>{{license_summary}}</p>
+              </div>
+              <div class="doc-text">{{license_content}}</div>
+            </div>
+          </div>
+
+          <div class="doc-panel" id="disclaimer-panel">
+            <div class="doc-header">
+              <h2>免责声明</h2>
+              <div class="doc-meta">
+                <span class="doc-date">更新时间：{{disclaimer_updated}}</span>
+                <span class="doc-version">版本：{{disclaimer_version}}</span>
+              </div>
+            </div>
+            <div class="doc-body">
+              <div class="doc-summary">
+                <h3>声明摘要</h3>
+                <p>{{disclaimer_summary}}</p>
+              </div>
+              <div class="doc-text">{{disclaimer_content}}</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 文档操作 -->
+        <section class="doc-actions">
+          <div class="actions-bar">
+            <button class="action-btn" onclick="printDocument()">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M18 8h-1V6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H6a2 2 0 0 0-2 2v6h4v4h8v-4h4v-6a2 2 0 0 0-2-2zM9 6h6v2H9V6zm6 14H9v-4h6v4zm4-6v2h-2v-2h2z" />
+              </svg>
+              打印
+            </button>
+            <button class="action-btn" onclick="exportDocument()">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M5 20h14v-2H5v2zm7-18L5.33 9h3.17v6h3v-6h3.17L12 2z" />
+              </svg>
+              导出
+            </button>
+            <button class="action-btn" onclick="shareDocument()">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
+              </svg>
+              分享
+            </button>
+          </div>
+        </section>
+
+        <!-- 联系信息 -->
+        <section class="contact-info">
+          <div class="contact-card">
+            <h3>联系开发者</h3>
+            <div class="contact-details">
+              <p><strong>邮箱：</strong>{{developer_email}}</p>
+              <p><strong>网站：</strong><a href="{{developer_website}}" target="_blank">{{developer_website}}</a></p>
+              <p><strong>客服热线：</strong>{{support_phone}}</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>关于项目</h4>
+            <p>收集和整理移动应用的法律文档，帮助用户了解应用的隐私政策和用户协议。</p>
+          </div>
+          <div class="footer-section">
+            <h4>快速链接</h4>
+            <ul>
+              <li><a href="index.html">首页</a></li>
+              <li><a href="about.html">关于</a></li>
+              <li><a href="contact.html">联系</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>联系我们</h4>
+            <p>邮箱：contact@legaldocs.com</p>
+            <p>GitHub：github.com/legaldocs</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Mobile Apps Legal Docs. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/app-template.js"></script>
+  </body>
+</html>
