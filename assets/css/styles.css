@@ -217,6 +217,8 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .doc-nav .back-link {
@@ -266,6 +268,61 @@ main {
   margin-bottom: 0.5rem;
 }
 
+/* Language Switcher Styles */
+.language-switcher {
+  display: flex;
+  background: #f8f9fa;
+  border-radius: 25px;
+  padding: 4px;
+  gap: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6c757d;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.lang-btn:hover {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  transform: translateY(-1px);
+}
+
+.lang-btn.active {
+  background: #667eea;
+  color: white;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.lang-btn.active:hover {
+  background: #5a6fd8;
+  transform: translateY(-1px);
+}
+
+.lang-flag {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.lang-text {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 /* 页脚样式 */
 footer {
   background-color: #333;
@@ -311,5 +368,30 @@ footer {
 
   .app-meta {
     align-items: center;
+  }
+
+  .language-switcher {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .lang-btn {
+    flex: 1;
+    justify-content: center;
+    max-width: 120px;
+  }
+
+  .doc-nav .container {
+    justify-content: center;
+  }
+
+  .back-link {
+    order: 1;
+  }
+
+  .nav-title {
+    order: 2;
   }
 }
