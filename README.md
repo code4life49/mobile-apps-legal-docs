@@ -89,3 +89,78 @@ mobile-apps-legal-docs/
 ## 联系方式
 
 如有法律文档更新或合规问题，请联系开发者 code4life 或法务团队。
+
+## Github Page 部署
+
+本项目已配置 GitHub Pages 自动部署，可通过以下域名访问：
+
+- **主域名：** https://legal.shijingty.com
+- **GitHub 域名：** https://[username].github.io/mobile-apps-legal-docs
+
+### 部署配置
+
+- **部署分支：** `main`
+- **自动部署：** 任何推送到 `main` 分支的提交都会自动触发网站更新
+- **自定义域名：** `legal.shijingty.com` (已在 Namecheap 配置)
+
+### 域名配置
+
+#### Namecheap DNS 设置
+
+在 Namecheap 控制面板中配置以下 DNS 记录：
+
+```
+类型: CNAME
+主机: legal
+值: code4life49.github.io
+```
+
+#### GitHub 仓库设置
+
+1. 进入仓库 `Settings` → `Pages`
+2. 选择 `Deploy from a branch`
+3. 分支选择 `main`
+4. 文件夹选择 `/ (root)`
+5. 在 `Custom domain` 中填入 `legal.shijingty.com`
+6. 勾选 `Enforce HTTPS`
+
+### 部署流程
+
+1. **本地修改：** 编辑法律文档文件
+2. **提交更改：**
+   ```bash
+   git add .
+   git commit -m "更新法律文档"
+   git push origin main
+   ```
+3. **自动部署：** GitHub Actions 自动构建并部署到 GitHub Pages
+4. **访问更新：** 通常在 1-5 分钟内生效
+
+### 访问法律文档
+
+文档可通过以下 URL 格式访问：
+
+- 应用隐私政策：`https://legal.shijingty.com/[app-name]/privacy-policy`
+- 应用服务条款：`https://legal.shijingty.com/[app-name]/terms-of-service`
+
+例如：
+
+- `https://legal.shijingty.com/my-awesome-app/privacy-policy`
+- `https://legal.shijingty.com/photo-editor-pro/terms-of-service`
+
+### 注意事项
+
+- 请确保所有文档链接使用 HTTPS
+- 域名生效可能需要几分钟到几小时
+- 如遇到 SSL 证书问题，请等待 24-48 小时让证书完全生效
+- 建议在推送前在本地预览 Markdown 文档格式
+
+### 故障排除
+
+如果网站无法访问或显示不安全：
+
+1. 检查 DNS 记录是否正确配置
+2. 确认 GitHub Pages 设置中的自定义域名正确
+3. 等待 DNS 传播完成（最多 24 小时）
+4. 清除浏览器缓存后重试
+5. 检查是否有混合内容（HTTP 链接）导致的安全警告
