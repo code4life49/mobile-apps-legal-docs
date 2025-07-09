@@ -5,6 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Health Sprout - 法律文档</title>
     <link rel="stylesheet" href="../assets/css/styles.css" />
+    <style>
+      .feedback-section {
+        background: linear-gradient(135deg, #ff6b6b, #ff8a80);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 30px 0;
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      .feedback-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: pulse 3s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.1;
+        }
+      }
+      .feedback-header {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .feedback-header h2 {
+        font-size: 28px;
+        margin: 0 0 10px 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      .feedback-header .emoji {
+        font-size: 40px;
+        margin-bottom: 15px;
+        display: block;
+        animation: bounce 2s infinite;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .feedback-content {
+        position: relative;
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 25px;
+        color: #333;
+      }
+      .feedback-intro {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #666;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #ff6b6b;
+        box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+      }
+      .form-group textarea {
+        height: 120px;
+        resize: vertical;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      @media (max-width: 768px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .submit-btn {
+        background: linear-gradient(135deg, #ff6b6b, #ff5252);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+      }
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+      }
+      .submit-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+      .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-align: center;
+        display: none;
+      }
+      .alert-success {
+        background-color: #d4edda;
+        border: 2px solid #28a745;
+        color: #155724;
+      }
+      .alert-error {
+        background-color: #f8d7da;
+        border: 2px solid #dc3545;
+        color: #721c24;
+      }
+      .highlight-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .feature-item {
+        background: rgba(255, 107, 107, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        border: 2px solid rgba(255, 107, 107, 0.2);
+      }
+      .feature-item .icon {
+        font-size: 24px;
+        margin-bottom: 8px;
+        display: block;
+      }
+      .feature-item .text {
+        font-size: 14px;
+        font-weight: bold;
+        color: #ff4444;
+      }
+    </style>
   </head>
   <body>
     <nav class="doc-nav">
@@ -32,6 +212,73 @@
 
     <main>
       <div class="container">
+        <!-- 醒目的反馈区域 -->
+        <div class="feedback-section">
+          <div class="feedback-header">
+            <span class="emoji">📢</span>
+            <h2>用户反馈与投诉中心</h2>
+            <p>您的声音很重要！有问题、建议或需要帮助？我们随时为您服务</p>
+          </div>
+
+          <div class="feedback-content">
+            <div class="feedback-intro">
+              <div class="highlight-features">
+                <div class="feature-item">
+                  <span class="icon">🐛</span>
+                  <div class="text">问题报告</div>
+                </div>
+                <div class="feature-item">
+                  <span class="icon">💡</span>
+                  <div class="text">功能建议</div>
+                </div>
+                <div class="feature-item">
+                  <span class="icon">⚠️</span>
+                  <div class="text">投诉处理</div>
+                </div>
+                <div class="feature-item">
+                  <span class="icon">🗑️</span>
+                  <div class="text">数据删除</div>
+                </div>
+              </div>
+              <p><strong>承诺：24小时内回复 | 专业客服团队 | 隐私保护</strong></p>
+            </div>
+
+            <div id="alertContainer"></div>
+
+            <form id="feedbackForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="userName">姓名 *</label>
+                  <input type="text" id="userName" name="userName" required />
+                </div>
+                <div class="form-group">
+                  <label for="userEmail">邮箱 *</label>
+                  <input type="email" id="userEmail" name="userEmail" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="feedbackType">反馈类型 *</label>
+                <select id="feedbackType" name="feedbackType" required>
+                  <option value="">请选择反馈类型...</option>
+                  <option value="bug">🐛 问题报告</option>
+                  <option value="suggestion">💡 功能建议</option>
+                  <option value="complaint">⚠️ 投诉</option>
+                  <option value="data-deletion">🗑️ 数据删除请求</option>
+                  <option value="other">🤔 其他</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">详细描述 *</label>
+                <textarea id="message" name="message" placeholder="请详细描述您的问题、建议或需求。如果是数据删除请求，请说明需要删除的具体数据范围..." required></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submitBtn">🚀 立即发送反馈</button>
+            </form>
+          </div>
+        </div>
+
         <div class="apps-grid">
           <div class="app-card">
             <div class="doc-icon">📄</div>
@@ -65,5 +312,128 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <!-- EmailJS SDK - 使用最新版本 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      // 初始化 EmailJS
+      (function () {
+        emailjs.init({
+          publicKey: "TLExDF9i3h_lTFHO5",
+        });
+      })();
+
+      // 表单提交处理
+      document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById("submitBtn");
+        const alertContainer = document.getElementById("alertContainer");
+
+        // 禁用提交按钮
+        submitBtn.disabled = true;
+        submitBtn.textContent = "🚀 发送中...";
+
+        // 获取表单数据
+        const formData = new FormData(this);
+        const templateParams = {
+          from_name: formData.get("userName"),
+          from_email: formData.get("userEmail"),
+          feedback_type: formData.get("feedbackType"),
+          message: formData.get("message"),
+          app_name: "Health Sprout",
+          timestamp: new Date().toLocaleString("zh-CN"),
+          to_email: "hk.code4life@gmail.com",
+        };
+
+        // 使用 EmailJS 发送邮件
+        emailjs
+          .send("service_0ha5u4z", "template_5edbpuh", templateParams)
+          .then(
+            function (response) {
+              console.log("邮件发送成功!", response.status, response.text);
+
+              // 显示成功消息
+              alertContainer.innerHTML = `
+              <div class="alert alert-success" style="display: block;">
+                ✅ 反馈已成功发送！我们会在24小时内回复您。
+                <br><small>感谢您的反馈，我们会认真处理您的意见。</small>
+              </div>
+            `;
+
+              // 重置表单
+              document.getElementById("feedbackForm").reset();
+
+              // 5秒后隐藏成功消息
+              setTimeout(() => {
+                alertContainer.innerHTML = "";
+              }, 5000);
+            },
+            function (error) {
+              console.error("邮件发送失败:", error);
+
+              // 显示错误消息并提供备用方案
+              alertContainer.innerHTML = `
+              <div class="alert alert-error" style="display: block;">
+                ❌ 发送失败，请尝试以下备用方案：
+                <br><strong>邮箱：</strong> <a href="mailto:support@shijingty.com" style="color: #721c24; text-decoration: underline;">support@shijingty.com</a>
+                <br><small>您也可以直接发送邮件，我们同样会及时回复</small>
+              </div>
+            `;
+            }
+          )
+          .finally(() => {
+            // 恢复提交按钮
+            submitBtn.disabled = false;
+            submitBtn.textContent = "🚀 立即发送反馈";
+          });
+      });
+
+      // 备用：如果 EmailJS 加载失败，回退到 mailto 方式
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          if (typeof emailjs === "undefined") {
+            console.warn("EmailJS 加载失败，使用 mailto 备用方案");
+            setupMailtoFallback();
+          }
+        }, 3000);
+      });
+
+      // mailto 备用方案
+      function setupMailtoFallback() {
+        const form = document.getElementById("feedbackForm");
+        const newForm = form.cloneNode(true);
+        form.parentNode.replaceChild(newForm, form);
+
+        newForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          const emailBody = `
+用户反馈 - Health Sprout
+
+姓名：${formData.get("userName")}
+邮箱：${formData.get("userEmail")}
+反馈类型：${formData.get("feedbackType")}
+提交时间：${new Date().toLocaleString("zh-CN")}
+
+详细内容：
+${formData.get("message")}
+
+---
+此邮件来自 Health Sprout 用户反馈系统
+          `.trim();
+
+          const mailtoLink = `mailto:support@shijingty.com?subject=${encodeURIComponent("Health Sprout 用户反馈 - " + formData.get("feedbackType"))}&body=${encodeURIComponent(emailBody)}`;
+          window.location.href = mailtoLink;
+
+          document.getElementById("alertContainer").innerHTML = `
+            <div class="alert alert-success" style="display: block;">
+              📧 已为您打开邮件客户端，请完成发送。
+              <br><small>如果未自动打开，请手动发送邮件至 support@shijingty.com</small>
+            </div>
+          `;
+        });
+      }
+    </script>
   </body>
 </html>
